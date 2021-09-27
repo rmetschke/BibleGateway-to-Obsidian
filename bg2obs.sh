@@ -107,7 +107,7 @@ fi
     export_number=${chapter}
   fi
 
-filename=${export_prefix}$export_number # Setting the filename
+filename="${export_prefix}${export_number}-${translation}" # Setting the filename
 
 # Navigation in the note
   if (( ${prev_chapter} < 10 )); then # Turning single into double digit numbers
@@ -120,8 +120,8 @@ filename=${export_prefix}$export_number # Setting the filename
     next_chapter="0${next_chapter}"
   fi
 
-  prev_file=${export_prefix}$prev_chapter # Naming previous and next files
-  next_file=${export_prefix}$next_chapter
+  prev_file="${export_prefix}${prev_chapter}-${translation}" # Naming previous and next files
+  next_file="${export_prefix}${next_chapter}-${translation}"
 
   # Formatting Navigation and omitting links that aren't necessary
   if [ ${maxchapter} -eq 1 ]; then
@@ -185,7 +185,7 @@ filename=${export_prefix}$export_number # Setting the filename
 done # End of the book exporting loop
 
   # Create an overview file for each book of the Bible:
-  overview_file="links: [[The Bible]]\n# ${book}\n\n[[${abbreviation}-01|Start Reading →]]"
+  overview_file="links: [[The Bible]]\n# ${book}\n\n[[${abbreviation}-01-${translation}|Start Reading →]]"
   echo -e $overview_file >> "$book.md"
   #mkdir -p ./Scripture ("${translation}")/"${folder_name}"; mv "$book.md" './Scripture ('"${translation}"')/'"${folder_name}"
   mv "$book.md" './Scripture ('"${translation}"')/'"${folder_name}"
